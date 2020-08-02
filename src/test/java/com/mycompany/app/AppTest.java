@@ -27,11 +27,7 @@ public class AppTest {
                 .password("password")
                 .email("test@test.com");
 
-        RestAssured
-                .given().contentType(ContentType.JSON).log().all()
-                .body(user)
-                .when()
-                .post("register")
+        userApiService.registerUser(user)
                 .then().log().all()
                 .assertThat()
                 .statusCode(200);
